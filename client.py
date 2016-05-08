@@ -22,7 +22,7 @@ PORT = 13337
 UPLOAD = False
 NETWORK_CHUNK = 4096
 DEBUG = 5
-VERSION = "0.1"
+VERSION = "0.2"
 
 print "Distributed encoding client version %s running on %s." % (VERSION, sys.platform)
 

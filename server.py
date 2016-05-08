@@ -20,7 +20,7 @@ GOPS = 7
 NETWORK_CHUNK = 4096
 DEBUG = 6
 TIMEOUT = 1800
-VERSION = "0.1"
+VERSION = "0.2"
 # mah spinlock
 queue_lock = False
 
