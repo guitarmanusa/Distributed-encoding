@@ -75,7 +75,7 @@ def error(string):
 def make_chunks(filename):
 	chunks = []
 	i_frames = []
-	os.system("./mkvinfo -s \"%s\" | grep \"track 1\" | grep I\ frame > /tmp/mkvinfo.txt" % filename)
+	os.system("mkvinfo -s \"%s\" | grep \"track 1\" | grep I\ frame > /tmp/mkvinfo.txt" % filename)
 	mkvinfo = open("/tmp/mkvinfo.txt", "r")
 	line = mkvinfo.readline()
 	i_frames_num = 0
@@ -91,7 +91,7 @@ def make_chunks(filename):
 	for frame in i_frames:
 		print frame
 		timecodes += "," + frame
-	mkvmerge_execute = "./mkvmerge -A -S --no-chapters -M -o \"split." +filename + "\" --split timecodes:" + timecodes[1:] + " \"" + filename + "\""
+	mkvmerge_execute = "mkvmerge -A -S --no-chapters -M -o \"split." +filename + "\" --split timecodes:" + timecodes[1:] + " \"" + filename + "\""
 	info("Executing: " + mkvmerge_execute)
 	os.system(mkvmerge_execute)
 	files = os.listdir(".")
