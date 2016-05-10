@@ -13,7 +13,7 @@ import threading
 import time
 
 if sys.platform.startswith('linux'):
-	X264 = "./x264"
+	X264 = "./x264_gpac-lavf_static"
 elif sys.platform.startswith('win32') or sys.platform.startswith('cygwin'):
 	X264 = "x264.exe"
 else:
