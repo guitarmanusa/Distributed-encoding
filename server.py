@@ -312,7 +312,7 @@ def concat(filename):
 	for i in files:
 		if re.match("^\[8bit\]\ split.", i) and getCRC(i) == getCRC(filename):
 			merge_files += " + \"%s\"" % i
-			temp_files += i
+			temp_files.append(i)
 			info("Added %s to merge files." % i)
 	mkvmerge_execute = "mkvmerge -o \"%s\" %s" % (re.sub("split.", "", re.sub("-[0-9]{3}.mkv", ".mkv", filename)), merge_files[3:])
 	info("Executing %s" % mkvmerge_execute)
