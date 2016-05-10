@@ -314,6 +314,8 @@ def concat(filename):
 			merge_files += " + \"%s\"" % i
 			temp_files.append(i)
 			info("Added %s to merge files." % i)
+		if re.match("^split.", i) and getCRC(i) == getCRC(filename):
+			temp_files.append(i)
 	mkvmerge_execute = "mkvmerge -o \"%s\" %s" % (re.sub("split.", "", re.sub("-[0-9]{3}.mkv", ".mkv", filename)), merge_files[3:])
 	info("Executing %s" % mkvmerge_execute)
 	os.system(mkvmerge_execute)
