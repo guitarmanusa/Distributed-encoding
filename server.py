@@ -100,6 +100,7 @@ def make_chunks(filename):
 	for i in files:
 		if re.match("^split.", i) and getCRC(i) == getCRC(filename):
 			chunks.append(i)
+	os.remove(filename)
 	return chunks
 # socket functions
 
