@@ -105,6 +105,7 @@ def send_file(sock, filename):
 	else:
 		bitrate = 9001
 	info("Sent %d in %ds. (%d kB/s)" % (size, int(end - start), bitrate))
+	os.remove(filename)
 
 class FileSender(threading.Thread):
 	def __init__(self, sock, filename):
