@@ -330,7 +330,7 @@ def finish(sock):
 	get_into(sock, download, size)
 	sock.close()
 	remove_chunk(filename)
-	temp = filename.replace("\[8bit\] ", "")
+	temp = filename.replace("[8bit] ", "")
 	print temp
 	os.remove(temp)
 	if is_last(filename):
