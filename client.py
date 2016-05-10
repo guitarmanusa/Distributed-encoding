@@ -13,7 +13,7 @@ import threading
 import time
 
 if sys.platform.startswith('linux'):
-	X264 = "./x264_gpac-lavf_static"
+	X264 = "ffmpeg"
 elif sys.platform.startswith('win32') or sys.platform.startswith('cygwin'):
 	X264 = "x264.exe"
 else:
@@ -160,7 +160,8 @@ def encode(sock):
 		get_into(sock, download, size)
 		encode = get_line(sock)
 		sock.close()
-		x264_execute = X264 + " %s -o \"[8bit] %s\" \"%s\"" % (encode, filename, filename)
+		#x264_execute = X264 + " %s -o \"[8bit] %s\" \"%s\"" % (encode, filename, filename)
+		x264_execute = X264 + " -i %s %s \"[8bit] %s\"" % (filename, encode, filename)
 		info("Executing %s" % x264_execute)
 		#placebo = "mv %s [8bit]\ %s" % (filename, filename)
 		os.system(x264_execute)
@@ -169,6 +170,7 @@ def encode(sock):
 		sock.connect(address)
 		sender = FileSender(sock, filename)
 		sender.start()
+		os.remove(filename)
 
 def log_on(sock, host, n):
 	if n == 0:
